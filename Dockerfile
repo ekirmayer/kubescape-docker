@@ -1,4 +1,4 @@
-FROM alpine:3.15.3 as builder
+FROM alpine:3.18.3 as builder
 
 ARG version="v2.0.149"
 RUN apk --no-cache add curl
@@ -12,7 +12,7 @@ ENV OUTPUT=$BIN_DIR/kubescape
 RUN curl -L $DOWNLOAD_URL -o $OUTPUT
 RUN chmod +x $BIN_DIR/kubescape
 
-FROM alpine:3.15.3
+FROM alpine:3.18.3
 RUN addgroup kubescape && adduser -D -G kubescape kubescape
 USER kubescape
 ENV KUBESCAPE_DIR=/home/kubescape
